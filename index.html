@@ -25,30 +25,31 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#" id='nav-auth'>Authentication</a></li>
-          <li><a href="#" id='nav-my-movies'>My Movies</a></li>
-          <li><a href="#" id='nav-search'>Search</a></li>
+          <li><a id='nav-auth' class='navbar-button'>Authentication</a></li>
+          <li><a id='nav-my-movies' class='navbar-button'>My Movies</a></li>
+          <li><a id='nav-search' class='navbar-button'>Search</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-  <div id='myMovies' class=''>
+  <!-- End of navbar------------------------------- -->
+  <div id='myMovies' class='hide'>
     <h1>My Movies</h1>
   </div>
-  <div id='search' class=''>
+  <div id='search'>
       <h1>Search</h1>
       <form>
           <div>
-            <label for="search">Search</label>
-            <input type="text" id="search" name="search">
+            <label for="label-search">Search</label>
+            <input type="text" id="label-search" name="label-search">
           </div>
           <div>
             <button>Submit</button>
           </div>
         </form>
-        <div id='movies'></div>
+        <div id='movies' class='hide'></div>
     </div>
-    <div id='authScreen' class=''>
+    <div id='authScreen' class='hide'>
         <h1>My Movies</h1>
         <button>Do Stuff</button>
       </div>
