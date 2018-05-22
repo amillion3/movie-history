@@ -1,3 +1,13 @@
 body {
   background-color: lightgoldenrodyellow;
 }
+
+#input-search-movies {
+  margin-top: 10%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.glyphicon {
+  top: 0px;
+}
