@@ -37,18 +37,12 @@
     <h1>My Movies</h1>
   </div>
   <div id='search'>
-      <h1>Search</h1>
-      <form>
-          <div>
-            <label for="label-search">Search</label>
-            <input type="text" id="label-search" name="label-search">
-          </div>
-          <div>
-            <button>Submit</button>
-          </div>
-        </form>
-        <div id='movies' class='hide'></div>
+    <div class="input-group input-group-lg text-center" id='input-search-movies'>
+      <span class="input-group-addon glyphicon glyphicon-search" id="basic-addon1"></span>
+      <input type="text" class="form-control" placeholder="Search..." aria-describedby="basic-addon1">
     </div>
+    <div id='movies' class='hide'></div>
+  </div>
     <div id='authScreen' class='hide'>
         <h1>Login Now!</h1>
         <button>Do Stuff</button>
