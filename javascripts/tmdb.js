@@ -2,6 +2,12 @@
 
 const dom = require('./dom');
 
+let tmdbKey = '';
+
+const setKey = input => {
+  tmdbKey = input;
+};
+
 const singleMovie = {
   adult: false,
   backdrop_path: '/c2Ax8Rox5g6CneChwy1gmu4UbSb.jpg',
@@ -25,4 +31,5 @@ const showResults = () => {
 
 module.exports = {
   showResults,
+  setKey,
 };
