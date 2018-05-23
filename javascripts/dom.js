@@ -1,6 +1,6 @@
 const domString = movieArray => {
   let output = '';
-  movieArray.forEach(movie => {
+  movieArray.results.forEach(movie => {
     output += `<div class="col-sm-6 col-md-4">`;
     output += `  <div class="thumbnail">`;
     output += `    <img src="..." alt="...">`;
