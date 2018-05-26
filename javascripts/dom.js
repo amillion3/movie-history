@@ -1,6 +1,9 @@
 const domString = (movieArray, imageConfig) => {
   let output = '';
-  movieArray.results.forEach(movie => {
+  movieArray.results.forEach((movie, index) => {
+    if (index % 3 === 0) {
+      output += '<div class="row">';
+    }
     output += `<div class="col-sm-6 col-md-4">`;
     output += `  <div class="thumbnail">`;
     output += `    <img src="${imageConfig.base_url}w342/${movie.poster_path}" alt="Movie Poster">`;
@@ -11,6 +14,9 @@ const domString = (movieArray, imageConfig) => {
     output += `    </div>`;
     output += `  </div>`;
     output += `</div>`;
+    if (index % 3 === 2) {
+      output += '</div>';
+    }
   });
   printToDom(output);
 };
