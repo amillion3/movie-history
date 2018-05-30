@@ -1,6 +1,7 @@
-const domString = (movieArray, imageConfig) => {
+const domString = (movieArray, imageConfig, whereToPrint) => {
   let output = '';
-  movieArray.results.forEach((movie, index) => {
+  // movieArray.results.forEach((movie, index) => {
+  movieArray.forEach((movie, index) => {
     if (index % 3 === 0) {
       output += '<div class="row">';
     }
@@ -8,7 +9,7 @@ const domString = (movieArray, imageConfig) => {
     output += `  <div class="thumbnail movie">`;
     output += `    <img data-poster='${movie.poster_path}' src="${imageConfig.base_url}w342/${movie.poster_path}" alt="Movie Poster">`;
     output += `    <div class="caption">`;
-    output += `      <h3 class='movie-title'>${movie.original_title}</h3>`;
+    output += `      <h3 class='movie-title'>${movie.original_title ? movie.original_title : movie.title}</h3>`;
     output += `      <p class='movie-overview'>${movie.overview}</p>`;
     output += `      <p><a href="#" class="btn btn-primary" role="button">Review</a> <a class="btn btn-default addMovieToWishList" role="button">Wishlist</a></p>`;
     output += `    </div>`;
@@ -18,11 +19,11 @@ const domString = (movieArray, imageConfig) => {
       output += '</div>';
     }
   });
-  printToDom(output);
+  printToDom(whereToPrint, output);
 };
 
-const printToDom = input => {
-  $('#movies').html(input);
+const printToDom = (whereToPrint, input) => {
+  $(`${whereToPrint}`).html(input);
 };
 
 module.exports = {

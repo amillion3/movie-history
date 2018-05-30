@@ -1,5 +1,6 @@
 const tmdb = require('./tmdb');
 const firebaseApi = require('./firebaseApi');
+const dom = require('./dom');
 
 const myLinks = () => {
   $(document).click(e => {
@@ -53,8 +54,7 @@ const saveMovieToWishListEvent = e => {
 const getAllMoviesEvent = () => {
   firebaseApi.getAllMovies()
     .then(moviesArray => {
-      $('#savedMovies').append(moviesArray);
-      console.error(moviesArray);
+      dom.domString(moviesArray, tmdb.getImageConfig(), '#savedMovies');
     })
     .catch(err => {
       console.error('Error in get all movies ', err);
