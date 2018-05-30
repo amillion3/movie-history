@@ -5,12 +5,12 @@ const domString = (movieArray, imageConfig) => {
       output += '<div class="row">';
     }
     output += `<div class="col-sm-6 col-md-4">`;
-    output += `  <div class="thumbnail">`;
-    output += `    <img src="${imageConfig.base_url}w342/${movie.poster_path}" alt="Movie Poster">`;
+    output += `  <div class="thumbnail movie">`;
+    output += `    <img data-poster='${movie.poster_path}' src="${imageConfig.base_url}w342/${movie.poster_path}" alt="Movie Poster">`;
     output += `    <div class="caption">`;
-    output += `      <h3>${movie.original_title}</h3>`;
-    output += `      <p>${movie.overview}</p>`;
-    output += `      <p><a href="#" class="btn btn-primary" role="button">Review</a> <a href="#" class="btn btn-default" role="button">Wishlist</a></p>`;
+    output += `      <h3 class='movie-title'>${movie.original_title}</h3>`;
+    output += `      <p class='movie-overview'>${movie.overview}</p>`;
+    output += `      <p><a href="#" class="btn btn-primary" role="button">Review</a> <a class="btn btn-default addMovieToWishList" role="button">Wishlist</a></p>`;
     output += `    </div>`;
     output += `  </div>`;
     output += `</div>`;
