@@ -17,7 +17,28 @@ const saveMovieToWishlist = newMovie => {
   });
 };
 
+const getAllMovies = () => {
+  return new Promise((resolve, reject) => {
+    const allMoviesArray = [];
+    $.ajax({
+      method: 'GET',
+      url: `${firebaseConfig.databaseURL}/movies.json`,
+    })
+      .done(allMoviesObject => { // allMoviesObject is an object of objects
+        if (allMoviesObject !== null) {
+          Object.keys(allMoviesObject).forEach(firebaseKey => {
+            allMoviesObject[firebaseKey].id = firebaseKey;
+            allMoviesArray.push(allMoviesObject[firebaseKey]);
+          });
+        }
+        resolve(allMoviesArray); // returns an array of objects
+      })
+      .fail(err => reject(err));
+  });
+};
+
 module.exports = {
   saveMovieToWishlist,
   setFirebaseConfig,
+  getAllMovies,
 };

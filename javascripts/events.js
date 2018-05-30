@@ -12,6 +12,7 @@ const myLinks = () => {
       $('#myMovies').removeClass('hide');
       $('#search').addClass('hide');
       $('#authScreen').addClass('hide');
+      getAllMoviesEvent();
     } else if (e.target.id === 'nav-search') {
       $('#myMovies').addClass('hide');
       $('#search').removeClass('hide');
@@ -47,6 +48,17 @@ const saveMovieToWishListEvent = e => {
         console.error('Uh oh...error in saving movie ', err);
       });
   });
+};
+
+const getAllMoviesEvent = () => {
+  firebaseApi.getAllMovies()
+    .then(moviesArray => {
+      $('#savedMovies').append(moviesArray);
+      console.error(moviesArray);
+    })
+    .catch(err => {
+      console.error('Error in get all movies ', err);
+    });
 };
 
 const initializer = () => {
