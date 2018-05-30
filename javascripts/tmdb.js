@@ -44,10 +44,12 @@ const searchTMDB = txt => {
   });
 };
 
+const getImageConfig = () => imageConfig;
+
 const showResults = searchText => {
   searchTMDB(searchText)
     .then(result => {
-      dom.domString(result, imageConfig);
+      dom.domString(result.results, imageConfig, '#movies');
     })
     .catch(error => {
       console.log(error);
@@ -58,4 +60,5 @@ module.exports = {
   showResults,
   setKey,
   searchTMDB,
+  getImageConfig,
 };
