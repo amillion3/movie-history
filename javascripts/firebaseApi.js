@@ -69,10 +69,52 @@ const updateMovieToWatchedInDb = (updatedMovie, movieId) => {
   });
 };
 
+const getWatchedMovies = () => {
+  return new Promise((resolve, reject) => {
+    const allMoviesArray = [];
+    $.ajax({
+      method: 'GET',
+      url: `${firebaseConfig.databaseURL}/movies.json?orderBy="isWatched"&equalTo=true`,
+    })
+      .done(allMoviesObject => { // allMoviesObject is an object of objects
+        if (allMoviesObject !== null) {
+          Object.keys(allMoviesObject).forEach(firebaseKey => {
+            allMoviesObject[firebaseKey].id = firebaseKey;
+            allMoviesArray.push(allMoviesObject[firebaseKey]);
+          });
+        }
+        resolve(allMoviesArray); // returns an array of objects
+      })
+      .fail(err => reject(err));
+  });
+};
+
+const getWishlistMovies = () => {
+  return new Promise((resolve, reject) => {
+    const allMoviesArray = [];
+    $.ajax({
+      method: 'GET',
+      url: `${firebaseConfig.databaseURL}/movies.json?orderBy="isWatched"&equalTo=false`,
+    })
+      .done(allMoviesObject => { // allMoviesObject is an object of objects
+        if (allMoviesObject !== null) {
+          Object.keys(allMoviesObject).forEach(firebaseKey => {
+            allMoviesObject[firebaseKey].id = firebaseKey;
+            allMoviesArray.push(allMoviesObject[firebaseKey]);
+          });
+        }
+        resolve(allMoviesArray); // returns an array of objects
+      })
+      .fail(err => reject(err));
+  });
+};
+
 module.exports = {
   saveMovieToWishlist,
   setFirebaseConfig,
   getAllMovies,
   deleteMovieFromDb,
   updateMovieToWatchedInDb,
+  getWatchedMovies,
+  getWishlistMovies,
 };
