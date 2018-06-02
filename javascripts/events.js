@@ -64,8 +64,13 @@ const getAllMoviesEvent = () => {
 const deleteMovieFromFirebase = e => {
   $(document).on('click', '.deleteMovieFromCollectionEvent', () => {
     const movieToDeleteId = $(e.target).closest('').data('firebaseId');
-    firebaseApi.deleteMovieFromDb(movieToDeleteId);
-    // $(`#${movieToDeleteId}`).remove();
+    firebaseApi.deleteMovieFromDb(movieToDeleteId)
+      .then(() => {
+        getAllMoviesEvent();
+      })
+      .catch(err => {
+        console.error('Error deleting movie from HTML Document, ', err);
+      });
   });
 };
 
