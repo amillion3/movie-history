@@ -54,16 +54,16 @@ const saveMovieToWishListEvent = e => {
 const getAllMoviesEvent = () => {
   firebaseApi.getAllMovies()
     .then(moviesArray => {
-      dom.domString(moviesArray, tmdb.getImageConfig(), '#savedMovies');
+      dom.domString(moviesArray, tmdb.getImageConfig(), '#savedMovies', true);
     })
     .catch(err => {
       console.error('Error in get all movies ', err);
     });
 };
 
-const deleteMovieFromFirebase = e => {
-  $(document).on('click', '.deleteMovieFromCollectionEvent', () => {
-    const movieToDeleteId = $(e.target).closest('').data('firebaseId');
+const deleteMovieFromFirebase = () => {
+  $(document).on('click', '.deleteMovieFromCollectionEvent', e => {
+    const movieToDeleteId = $(e.target).closest('.movie').data('firebaseId');
     firebaseApi.deleteMovieFromDb(movieToDeleteId)
       .then(() => {
         getAllMoviesEvent();
