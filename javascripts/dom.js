@@ -6,7 +6,7 @@ const domString = (movieArray, imageConfig, whereToPrint) => {
       output += '<div class="row">';
     }
     output += `<div class="col-sm-6 col-md-4">`;
-    output += `  <div class="thumbnail movie">`;
+    output += `  <div class="thumbnail movie" data-firebase-id="${movie.id}">`;
     output += `    <img data-poster='${movie.poster_path}' src="${imageConfig.base_url}w342/${movie.poster_path}" alt="Movie Poster">`;
     output += `    <div class="caption">`;
     output += `      <h3 class='movie-title'>${movie.original_title ? movie.original_title : movie.title}</h3>`;
