@@ -30,13 +30,16 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a id='nav-auth' class='navbar-button'>Authentication</a>
+            <a id='authenticate' class='navbar-button'>Authentication</a>
           </li>
           <li>
-            <a id='nav-my-movies' class='navbar-button'>My Movies</a>
+            <a id='mine' class='navbar-button hide'>My Movies</a>
           </li>
           <li>
-            <a id='nav-search' class='navbar-button'>Search</a>
+            <a id='navSearch' class='navbar-button hide'>Search</a>
+          </li>
+          <li>
+            <a id='logout' class='navbar-button hide'>Log Out</a>
           </li>
         </ul>
       </div>
@@ -74,13 +77,13 @@
         <div class="form-group">
           <label for="inputEmail" class="col-sm-2 control-label">Email</label>
           <div class="col-sm-10">
-            <input id='inputEmail' type="email" class="form-control" id="inputEmail3" placeholder="Email">
+            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
           </div>
         </div>
         <div class="form-group">
           <label for="inputPassword" class="col-sm-2 control-label">Password</label>
           <div class="col-sm-10">
-            <input id='inputPassword' type="password" class="form-control" id="inputPassword3" placeholder="Password">
+            <input id='inputPassword' type="password" class="form-control" placeholder="Password">
           </div>
         </div>
         <div class="form-group">
@@ -90,7 +93,7 @@
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button id='sign-in-btn'type="submit" class="btn btn-default">Sign in</button>
+            <button id='signin-btn'type="submit" class="btn btn-default">Sign in</button>
           </div>
         </div>
       </form>
@@ -98,18 +101,18 @@
     <!-- div is #registration-form
     login name is #signin-link -->
     <div class='hide' id='registration-form'>
-      <h1 class='text-center'>Register</h1>
+      <h1 class='text-center'>Registration</h1>
       <form class="form-horizontal col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
         <div class="form-group">
           <label for="registerEmail" class="col-sm-2 control-label">Email</label>
           <div class="col-sm-10">
-            <input id='registerEmail' type="email" class="form-control" id="inputEmail3" placeholder="Email">
+            <input id='registerEmail' type="email" class="form-control" id="registerEmail" placeholder="Email">
           </div>
         </div>
         <div class="form-group">
           <label for="registerPassword" class="col-sm-2 control-label">Password</label>
           <div class="col-sm-10">
-            <input id='registerPassword' type="password" class="form-control" id="inputPassword3" placeholder="Password">
+            <input id='registerPassword' type="password" class="form-control" placeholder="Password">
           </div>
         </div>
         <div class="form-group">
@@ -119,7 +122,7 @@
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button id='sign-in-btn'type="submit" class="btn btn-default">Register</button>
+            <button id='register-btn'type="submit" class="btn btn-default">Register</button>
           </div>
         </div>
       </form>

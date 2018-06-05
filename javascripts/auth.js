@@ -1,6 +1,4 @@
 const {getAllMoviesEvent,} = require('./events');
-// const {getAllMoviesEvent, initializer} = require('./events');
-// this is for importing multiple keys (functions)
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged(user => {
@@ -8,11 +6,16 @@ const checkLoginStatus = () => {
       $('#myMovies').removeClass('hide');
       $('#search').addClass('hide');
       $('#authScreen').addClass('hide');
+      $('#mine, #navSearch, #logout').removeClass('hide');
+      $('#authenticate').addClass('hide');
       // call the get movies
-      // events.getAllMoviesEvent();
       getAllMoviesEvent();
     } else {
-      // No user is signed in.
+      $('#myMovies').addClass('hide');
+      $('#search').addClass('hide');
+      $('#authScreen').removeClass('hide');
+      $('#logout, #mine, #navSearch').addClass('hide');
+      $('#authenticate').removeClass('hide');
     }
   });
 };

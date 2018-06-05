@@ -5,16 +5,16 @@ const dom = require('./dom');
 const myLinks = () => {
   $(document).click(e => {
     console.log(e);
-    if (e.target.id === 'nav-auth') {
+    if (e.target.id === 'authenticate') {
       $('#myMovies').addClass('hide');
       $('#search').addClass('hide');
       $('#authScreen').removeClass('hide');
-    } else if (e.target.id === 'nav-my-movies') {
+    } else if (e.target.id === 'mine') {
       $('#myMovies').removeClass('hide');
       $('#search').addClass('hide');
       $('#authScreen').addClass('hide');
       getAllMoviesEvent();
-    } else if (e.target.id === 'nav-search') {
+    } else if (e.target.id === 'navSearch') {
       $('#myMovies').addClass('hide');
       $('#search').removeClass('hide');
       $('#authScreen').addClass('hide');
@@ -132,12 +132,23 @@ const filterEvents = () => {
 };
 
 const authEvents = () => {
-  $('#signin-button').click((e) => {
+  $('#signin-btn').click((e) => {
     e.preventDefault();
     const email = $('#inputEmail').val();
     const pass = $('#inputPassword').val();
     firebase.auth().signInWithEmailAndPassword(email, pass)
-      .catch(function (error) {
+      .catch(error => {
+        const errorMessage = error.message;
+        console.error(errorMessage);
+        // ...
+      });
+  });
+
+  $('#register-btn').click(() => {
+    const email = $('#registerEmail').val();
+    const pass = $('#registerPassword').val();
+    firebase.auth().createUserWithEmailAndPassword(email, pass)
+      .catch(error => {
         const errorMessage = error.message;
         console.error(errorMessage);
         // ...
@@ -152,6 +163,15 @@ const authEvents = () => {
   $('#signin-link').click(() => {
     $('#login-form').removeClass('hide');
     $('#registration-form').addClass('hide');
+  });
+
+  $('#logout').click(() => {
+    firebase.auth().signOut().then(() => {
+      // Sign-out successful.
+    })
+      .catch(error => {
+        console.error(error);
+      });
   });
 };
 
