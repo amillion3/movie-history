@@ -5,6 +5,13 @@ const dom = require('./dom');
 let tmdbKey = '';
 let imageConfig = {};
 
+const setKey = input => {
+  tmdbKey = input;
+  getConfig();
+};
+
+const getImageConfig = () => imageConfig;
+
 const getConfig = () => {
   tmdbConfiguration()
     .then(result => {
@@ -27,16 +34,11 @@ const tmdbConfiguration = () => {
   });
 };
 
-const setKey = input => {
-  tmdbKey = input;
-  getConfig();
-};
-
 const searchTMDB = txt => {
   return new Promise((resolve, reject) => {
     $.ajax(`https://api.themoviedb.org/3/search/movie?api_key=${tmdbKey}&language=en-US&page=1&include_adult=false&query=${txt}`)
       .done(result => {
-        resolve(result);
+        resolve(result.results);
       })
       .fail(error => {
         reject(error);
@@ -44,12 +46,10 @@ const searchTMDB = txt => {
   });
 };
 
-const getImageConfig = () => imageConfig;
-
 const showResults = searchText => {
   searchTMDB(searchText)
     .then(result => {
-      dom.domString(result.results, imageConfig, '#movies');
+      dom.domString(result, imageConfig, 'movies');
     })
     .catch(error => {
       console.log(error);
